@@ -95,6 +95,66 @@ public:
         size -= 1;
     }
 
+    void insert(const T& data, size_t index) {
+        if (index >= size || index < 0) {
+            throw exception("Invalid index!");
+        }
+
+        if (index == 0) {
+            pushFront(data);
+            return;
+        }
+
+        if (index == size - 1) {
+            pushBack(data);
+            return;
+        }
+
+        Node<T>* before = head;
+        Node<T>* after = nullptr;
+
+        for (size_t i = 0; i < index - 1; i++) {
+            before = before->next;
+        }
+
+        after = before->next;
+
+        before->next = new Node<T>(data);
+        before->next->next = after;
+
+        size += 1;
+    }
+
+    void erase(size_t index) {
+        if (index >= size || index < 0) {
+            throw exception("Invalid index!");
+        }
+
+        if (index == 0) {
+            popFront();
+            return;
+        }
+
+        if (index == size - 1) {
+            popBack();
+            return;
+        }
+
+        Node<T>* before = head;
+        Node<T>* after = nullptr;
+
+        for (size_t i = 0; i < index - 1; i++) {
+            before = before->next;
+        }
+
+        after = before->next->next;
+
+        delete before->next;
+        before->next = after;
+
+        size -= 1;
+    }
+
     friend ostream& operator<<(ostream& out, const LinkedList& list) {
         Node<T>* ptr = list.head;
 
@@ -155,6 +215,9 @@ int main() {
     list.popBack();
 
     cout << list[2] << endl;
+
+    list.insert(1337, 2);
+    list.erase(2);
 
     cout << list << endl;
 
