@@ -178,23 +178,16 @@ public:
     }
 
     ~DoublyLinkedList() {
-        Node<T>* ptr = head;
-        Node<T>* ptr_next = head->next;
+        Node<T>* curr = head;
+        Node<T>* next = head->next;
 
-        while (ptr != nullptr) {
-            delete ptr;
-            ptr = ptr_next;
-
-            if (ptr == nullptr) {
-                break;
-            }
-
-            ptr_next = ptr->next;
+        while (next != nullptr) {
+            delete curr;
+            curr = next;
+            next = curr->next;
         }
 
-        head = nullptr;
-        tail = nullptr;
-        size = 0;
+        delete curr;
     }
 };
 
