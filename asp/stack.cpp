@@ -14,16 +14,16 @@ struct Node {
 
 template <class T>
 class Stack {
-    Node<T>* top;
+    Node<T>* head;
     size_t size;
 
     void init(const T& data) {
-        top = new Node<T>(data);
+        head = new Node<T>(data);
         size = 1;
     }
 public:
     Stack() {
-        top = nullptr;
+        head = nullptr;
         size = 0;
     }
 
@@ -33,8 +33,8 @@ public:
         } else {
             Node<T>* ptr = new Node<T>(data);
 
-            ptr->previous = top;
-            top = ptr;
+            ptr->previous = head;
+            head = ptr;
             size += 1;
         }
     }
@@ -45,21 +45,21 @@ public:
         }
 
         if (size == 1) {
-            delete top;
-            top = nullptr;
+            delete head;
+            head = nullptr;
             size = 0;
             return;
         }
 
-        Node<T>* ptr = top->previous;
+        Node<T>* ptr = head->previous;
 
-        delete top;
-        top = ptr;
+        delete head;
+        head = ptr;
         size -= 1;
     }
 
     friend ostream& operator<<(ostream& out, const Stack& obj) {
-        Node<T>* ptr = obj.top;
+        Node<T>* ptr = obj.head;
 
         while (ptr != nullptr) {
             out << ptr->data << "\n";
@@ -70,8 +70,8 @@ public:
     }
 
     ~Stack() {
-        Node<T>* curr = top;
-        Node<T>* next = top->previous;
+        Node<T>* curr = head;
+        Node<T>* next = head->previous;
 
         while (next != nullptr) {
             delete curr;
