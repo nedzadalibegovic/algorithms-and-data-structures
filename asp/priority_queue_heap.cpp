@@ -15,15 +15,15 @@ template <class T>
 class PriorityQueue_Heap {
     vector<Node<T>> items;
 
-    size_t index_leftChild(size_t index) {
+    static size_t index_leftChild(size_t index) {
         return 2 * index + 1;
     }
 
-    size_t index_rightChild(size_t index) {
+    static size_t index_rightChild(size_t index) {
         return 2 * index + 2;
     }
 
-    size_t index_parent(size_t index) {
+    static size_t index_parent(size_t index) {
         return index > 2 ? (index - 1) / 2 : 0;
     }
 
