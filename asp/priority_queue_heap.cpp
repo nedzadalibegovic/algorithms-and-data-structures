@@ -50,10 +50,41 @@ class PriorityQueue_Heap {
         }
     }
 
+    void bubbleDown() {
+        size_t index = 0;
+
+        while (index_hasLeftChild(index)) {
+            if (index_hasRightChild(index)) {
+                if (items[index_leftChild(index)].priority < items[index_rightChild(index)].priority) {
+                    swap(items[index_leftChild(index)], items[index]);
+                    index = index_leftChild(index);
+                } else {
+                    swap(items[index_rightChild(index)], items[index]);
+                    index = index_rightChild(index);
+                }
+            } else {
+                if (items[index_leftChild(index)].priority < items[index].priority) {
+                    swap(items[index_leftChild(index)], items[index]);
+                    index = index_leftChild(index);
+                }
+            }
+        }
+    }
+
 public:
     void enqueue(const T& data, size_t priority) {
         items.push_back(Node<T>(data, priority));
         bubbleUp(items.size() - 1);
+    }
+
+    void dequeue() {
+        if (items.empty()) {
+            return;
+        }
+
+        items[0] = items[items.size() - 1];
+        items.pop_back();
+        bubbleDown();
     }
 
     friend ostream& operator<<(ostream& out, const PriorityQueue_Heap<T>& obj) {
@@ -68,16 +99,22 @@ public:
 int main() {
     PriorityQueue_Heap<int> q;
 
-    q.enqueue(10, 3);
+    /*q.enqueue(10, 3);
     q.enqueue(20, 1);
     q.enqueue(30, 2);
     q.enqueue(40, 4);
-    q.enqueue(50, 1);
+    q.enqueue(50, 1);*/
 
     q.enqueue(60, 2);
     q.enqueue(70, 4);
     q.enqueue(80, 6);
     q.enqueue(90, 1);
+
+    q.dequeue();
+    q.dequeue();
+    q.dequeue();
+    q.dequeue();
+    q.dequeue();
 
     cout << q << endl;
 }
