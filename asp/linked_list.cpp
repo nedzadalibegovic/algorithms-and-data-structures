@@ -64,7 +64,7 @@ public:
         }
 
         Node<T>* itr = head;
-        Node<T>* ptr = nullptr;
+        Node<T>* ptr = itr;
 
         while (itr != tail) {
             ptr = itr;
