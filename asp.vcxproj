@@ -28,6 +28,9 @@
     <ClCompile Include="sort_algorithms\selection_sort.h" />
     <ClCompile Include="data_structures\stack.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="data_structures\node.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{2B6EFFE2-BB6E-459D-9C4B-0A8956AAD8A3}</ProjectGuid>

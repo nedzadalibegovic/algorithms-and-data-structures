@@ -1,26 +1,17 @@
 #pragma once
 #include <iostream>
+#include "node.h"
 
 using namespace std;
 
 template <class T>
-struct Node_LinkedList {
-    T data;
-    Node_LinkedList* next;
-
-    Node_LinkedList(const T& data) : data(data) {
-        next = nullptr;
-    }
-};
-
-template <class T>
 class LinkedList {
-    Node_LinkedList<T>* head;
-    Node_LinkedList<T>* tail;
+    Node<T>* head;
+    Node<T>* tail;
     size_t size;
 
     void init(const T& data) {
-        head = new Node_LinkedList<T>(data);
+        head = new Node<T>(data);
         tail = head;
         size = 1;
     }
@@ -35,7 +26,7 @@ public:
         if (size == 0) {
             init(data);
         } else {
-            Node_LinkedList<T>* ptr = new Node_LinkedList<T>(data);
+            Node<T>* ptr = new Node<T>(data);
 
             ptr->next = head;
             head = ptr;
@@ -47,7 +38,7 @@ public:
         if (size == 0) {
             init(data);
         } else {
-            tail->next = new Node_LinkedList<T>(data);
+            tail->next = new Node<T>(data);
             tail = tail->next;
             size += 1;
         }
@@ -64,8 +55,8 @@ public:
             return;
         }
 
-        Node_LinkedList<T>* itr = head;
-        Node_LinkedList<T>* ptr = itr;
+        Node<T>* itr = head;
+        Node<T>* ptr = itr;
 
         while (itr != tail) {
             ptr = itr;
@@ -89,7 +80,7 @@ public:
             return;
         }
 
-        Node_LinkedList<T>* ptr = head->next;
+        Node<T>* ptr = head->next;
 
         delete head;
         head = ptr;
@@ -111,8 +102,8 @@ public:
             return;
         }
 
-        Node_LinkedList<T>* before = head;
-        Node_LinkedList<T>* after = nullptr;
+        Node<T>* before = head;
+        Node<T>* after = nullptr;
 
         for (size_t i = 0; i < index - 1; i++) {
             before = before->next;
@@ -120,7 +111,7 @@ public:
 
         after = before->next;
 
-        before->next = new Node_LinkedList<T>(data);
+        before->next = new Node<T>(data);
         before->next->next = after;
 
         size += 1;
@@ -141,8 +132,8 @@ public:
             return;
         }
 
-        Node_LinkedList<T>* before = head;
-        Node_LinkedList<T>* after = nullptr;
+        Node<T>* before = head;
+        Node<T>* after = nullptr;
 
         for (size_t i = 0; i < index - 1; i++) {
             before = before->next;
@@ -157,7 +148,7 @@ public:
     }
 
     friend ostream& operator<<(ostream& out, const LinkedList& list) {
-        Node_LinkedList<T>* ptr = list.head;
+        Node<T>* ptr = list.head;
 
         while (ptr != nullptr) {
             out << ptr->data << "\n";
@@ -174,7 +165,7 @@ public:
             throw exception("Invalid index!");
         }
 
-        Node_LinkedList<T>* ptr = head;
+        Node<T>* ptr = head;
 
         for (size_t i = 0; i < index; i++) {
             ptr = ptr->next;
@@ -184,8 +175,8 @@ public:
     }
 
     ~LinkedList() {
-        Node_LinkedList<T>* curr = head;
-        Node_LinkedList<T>* next = head->next;
+        Node<T>* curr = head;
+        Node<T>* next = head->next;
 
         while (next != nullptr) {
             delete curr;

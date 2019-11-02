@@ -5,16 +5,16 @@
 using namespace std;
 
 template <class T>
-struct Node_PriorityQueue {
+struct Node {
     T data;
     size_t priority;
 
-    Node_PriorityQueue(const T& data, size_t priority) : data(data), priority(priority) {}
+    Node(const T& data, size_t priority) : data(data), priority(priority) {}
 };
 
 template <class T>
 class PriorityQueue_Heap {
-    vector<Node_PriorityQueue<T>> items;
+    vector<Node<T>> items;
 
     static size_t index_leftChild(size_t index) {
         return 2 * index + 1;
@@ -74,7 +74,7 @@ class PriorityQueue_Heap {
 
 public:
     void enqueue(const T& data, size_t priority) {
-        items.push_back(Node_PriorityQueue<T>(data, priority));
+        items.push_back(Node<T>(data, priority));
         bubbleUp(items.size() - 1);
     }
 

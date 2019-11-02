@@ -1,13 +1,12 @@
 #pragma once
 #include <iostream>
+#include "node.h"
 
 using namespace std;
 
 template <class T>
-struct Node_DL {
-    T data;
+struct Node_DL : Node<T> {
     Node_DL<T>* previous;
-    Node_DL<T>* next;
 
 public:
     Node_DL(const T& data) : data(data) {

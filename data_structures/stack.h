@@ -1,25 +1,16 @@
 #pragma once
 #include <iostream>
+#include "node.h"
 
 using namespace std;
 
 template <class T>
-struct Node_Stack {
-    T data;
-    Node_Stack* previous;
-
-    Node_Stack(const T& data) : data(data) {
-        previous = nullptr;
-    }
-};
-
-template <class T>
 class Stack {
-    Node_Stack<T>* head;
+    Node<T>* head;
     size_t size;
 
     void init(const T& data) {
-        head = new Node_Stack<T>(data);
+        head = new Node<T>(data);
         size = 1;
     }
 public:
@@ -32,9 +23,9 @@ public:
         if (size == 0) {
             init(data);
         } else {
-            Node_Stack<T>* ptr = new Node_Stack<T>(data);
+            Node<T>* ptr = new Node<T>(data);
 
-            ptr->previous = head;
+            ptr->next = head;
             head = ptr;
             size += 1;
         }
@@ -52,7 +43,7 @@ public:
             return;
         }
 
-        Node_Stack<T>* ptr = head->previous;
+        Node<T>* ptr = head->next;
 
         delete head;
         head = ptr;
@@ -60,24 +51,24 @@ public:
     }
 
     friend ostream& operator<<(ostream& out, const Stack& obj) {
-        Node_Stack<T>* ptr = obj.head;
+        Node<T>* ptr = obj.head;
 
         while (ptr != nullptr) {
             out << ptr->data << "\n";
-            ptr = ptr->previous;
+            ptr = ptr->next;
         }
 
         return out;
     }
 
     ~Stack() {
-        Node_Stack<T>* curr = head;
-        Node_Stack<T>* next = head->previous;
+        Node<T>* curr = head;
+        Node<T>* next = head->next;
 
         while (next != nullptr) {
             delete curr;
             curr = next;
-            next = curr->previous;
+            next = curr->next;
         }
 
         delete curr;

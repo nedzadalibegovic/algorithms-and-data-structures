@@ -1,26 +1,17 @@
 #pragma once
 #include <iostream>
+#include "node.h"
 
 using namespace std;
 
 template <class T>
-struct Node_Queue {
-    T data;
-    Node_Queue* next;
-
-    Node_Queue(const T& data) : data(data) {
-        next = nullptr;
-    }
-};
-
-template <class T>
 class Queue {
-    Node_Queue<T>* head;
-    Node_Queue<T>* tail;
+    Node<T>* head;
+    Node<T>* tail;
     size_t size;
 
     void init(const T& data) {
-        head = new Node_Queue<T>(data);
+        head = new Node<T>(data);
         tail = head;
         size = 1;
     }
@@ -36,7 +27,7 @@ public:
         if (size == 0) {
             init(data);
         } else {
-            tail->next = new Node_Queue<T>(data);
+            tail->next = new Node<T>(data);
             tail = tail->next;
             size += 1;
         }
@@ -55,7 +46,7 @@ public:
             return;
         }
 
-        Node_Queue<T>* ptr = head->next;
+        Node<T>* ptr = head->next;
 
         delete head;
         head = ptr;
@@ -63,7 +54,7 @@ public:
     }
 
     friend ostream& operator<<(ostream& out, const Queue& obj) {
-        Node_Queue<T>* ptr = obj.head;
+        Node<T>* ptr = obj.head;
 
         while (ptr != nullptr) {
             out << ptr->data << " ";
@@ -74,8 +65,8 @@ public:
     }
 
     ~Queue() {
-        Node_Queue<T>* curr = head;
-        Node_Queue<T>* next = head->next;
+        Node<T>* curr = head;
+        Node<T>* next = head->next;
 
         while (next != nullptr) {
             delete curr;
