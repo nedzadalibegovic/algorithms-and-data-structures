@@ -1,19 +1,20 @@
+#pragma once
 #include <iostream>
 #include <vector>
 
 using namespace std;
 
 template <class T>
-struct Node {
+struct Node_PriorityQueue {
     T data;
     size_t priority;
 
-    Node(const T& data, size_t priority) : data(data), priority(priority) {}
+    Node_PriorityQueue(const T& data, size_t priority) : data(data), priority(priority) {}
 };
 
 template <class T>
 class PriorityQueue_Heap {
-    vector<Node<T>> items;
+    vector<Node_PriorityQueue<T>> items;
 
     static size_t index_leftChild(size_t index) {
         return 2 * index + 1;
@@ -73,7 +74,7 @@ class PriorityQueue_Heap {
 
 public:
     void enqueue(const T& data, size_t priority) {
-        items.push_back(Node<T>(data, priority));
+        items.push_back(Node_PriorityQueue<T>(data, priority));
         bubbleUp(items.size() - 1);
     }
 
@@ -95,26 +96,3 @@ public:
         return out;
     }
 };
-
-int main() {
-    PriorityQueue_Heap<int> q;
-
-    /*q.enqueue(10, 3);
-    q.enqueue(20, 1);
-    q.enqueue(30, 2);
-    q.enqueue(40, 4);
-    q.enqueue(50, 1);*/
-
-    q.enqueue(60, 2);
-    q.enqueue(70, 4);
-    q.enqueue(80, 6);
-    q.enqueue(90, 1);
-
-    q.dequeue();
-    q.dequeue();
-    q.dequeue();
-    q.dequeue();
-    q.dequeue();
-
-    cout << q << endl;
-}

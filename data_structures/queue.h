@@ -1,25 +1,26 @@
+#pragma once
 #include <iostream>
 
 using namespace std;
 
 template <class T>
-struct Node {
+struct Node_Queue {
     T data;
-    Node* next;
+    Node_Queue* next;
 
-    Node(const T& data) : data(data) {
+    Node_Queue(const T& data) : data(data) {
         next = nullptr;
     }
 };
 
 template <class T>
 class Queue {
-    Node<T>* head;
-    Node<T>* tail;
+    Node_Queue<T>* head;
+    Node_Queue<T>* tail;
     size_t size;
 
     void init(const T& data) {
-        head = new Node<T>(data);
+        head = new Node_Queue<T>(data);
         tail = head;
         size = 1;
     }
@@ -35,7 +36,7 @@ public:
         if (size == 0) {
             init(data);
         } else {
-            tail->next = new Node<T>(data);
+            tail->next = new Node_Queue<T>(data);
             tail = tail->next;
             size += 1;
         }
@@ -54,7 +55,7 @@ public:
             return;
         }
 
-        Node<T>* ptr = head->next;
+        Node_Queue<T>* ptr = head->next;
 
         delete head;
         head = ptr;
@@ -62,7 +63,7 @@ public:
     }
 
     friend ostream& operator<<(ostream& out, const Queue& obj) {
-        Node<T>* ptr = obj.head;
+        Node_Queue<T>* ptr = obj.head;
 
         while (ptr != nullptr) {
             out << ptr->data << " ";
@@ -73,8 +74,8 @@ public:
     }
 
     ~Queue() {
-        Node<T>* curr = head;
-        Node<T>* next = head->next;
+        Node_Queue<T>* curr = head;
+        Node_Queue<T>* next = head->next;
 
         while (next != nullptr) {
             delete curr;
@@ -85,21 +86,3 @@ public:
         delete curr;
     }
 };
-
-int main() {
-    Queue<int> q;
-
-    /*for (size_t i = 0; i < 10000000; i++) {
-        q.enqueue(i);
-    }*/
-
-    for (size_t i = 0; i < 10; i++) {
-        q.enqueue(i);
-    }
-
-    q.dequeue();
-
-    cout << q << endl;
-
-    return 0;
-}

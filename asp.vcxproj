@@ -18,6 +18,16 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="data_structures\doubly_linked_list.h" />
+    <ClCompile Include="sort_algorithms\insertion_sort.h" />
+    <ClCompile Include="data_structures\linked_list.h" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="data_structures\priority_queue.h" />
+    <ClCompile Include="data_structures\queue.h" />
+    <ClCompile Include="sort_algorithms\selection_sort.h" />
+    <ClCompile Include="data_structures\stack.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <ProjectGuid>{2B6EFFE2-BB6E-459D-9C4B-0A8956AAD8A3}</ProjectGuid>

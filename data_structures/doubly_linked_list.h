@@ -1,30 +1,35 @@
+#pragma once
 #include <iostream>
 
 using namespace std;
 
 template <class T>
-struct Node {
+struct Node_DL {
     T data;
-    Node* next;
+    Node_DL<T>* previous;
+    Node_DL<T>* next;
 
-    Node(const T& data) : data(data) {
+public:
+    Node_DL(const T& data) : data(data) {
+        previous = nullptr;
         next = nullptr;
     }
 };
 
 template <class T>
-class LinkedList {
-    Node<T>* head;
-    Node<T>* tail;
+class DoublyLinkedList {
+    Node_DL<T>* head;
+    Node_DL<T>* tail;
     size_t size;
 
     void init(const T& data) {
-        head = new Node<T>(data);
+        head = new Node_DL<T>(data);
         tail = head;
         size = 1;
     }
+
 public:
-    LinkedList() {
+    DoublyLinkedList() {
         head = nullptr;
         tail = nullptr;
         size = 0;
@@ -34,9 +39,10 @@ public:
         if (size == 0) {
             init(data);
         } else {
-            Node<T>* ptr = new Node<T>(data);
+            Node_DL<T>* ptr = new Node_DL<T>(data);
 
             ptr->next = head;
+            head->previous = ptr;
             head = ptr;
             size += 1;
         }
@@ -46,7 +52,8 @@ public:
         if (size == 0) {
             init(data);
         } else {
-            tail->next = new Node<T>(data);
+            tail->next = new Node_DL<T>(data);
+            tail->next->previous = tail;
             tail = tail->next;
             size += 1;
         }
@@ -63,8 +70,8 @@ public:
             return;
         }
 
-        Node<T>* itr = head;
-        Node<T>* ptr = itr;
+        Node_DL<T>* itr = head;
+        Node_DL<T>* ptr = nullptr;
 
         while (itr != tail) {
             ptr = itr;
@@ -88,10 +95,11 @@ public:
             return;
         }
 
-        Node<T>* ptr = head->next;
+        Node_DL<T>* ptr = head->next;
 
         delete head;
         head = ptr;
+        head->previous = nullptr;
         size -= 1;
     }
 
@@ -110,8 +118,8 @@ public:
             return;
         }
 
-        Node<T>* before = head;
-        Node<T>* after = nullptr;
+        Node_DL<T>* before = head;
+        Node_DL<T>* after = nullptr;
 
         for (size_t i = 0; i < index - 1; i++) {
             before = before->next;
@@ -119,8 +127,11 @@ public:
 
         after = before->next;
 
-        before->next = new Node<T>(data);
+        before->next = new Node_DL<T>(data);
         before->next->next = after;
+
+        after->previous = before->next;
+        before->next->previous = before;
 
         size += 1;
     }
@@ -140,8 +151,8 @@ public:
             return;
         }
 
-        Node<T>* before = head;
-        Node<T>* after = nullptr;
+        Node_DL<T>* before = head;
+        Node_DL<T>* after = nullptr;
 
         for (size_t i = 0; i < index - 1; i++) {
             before = before->next;
@@ -151,12 +162,13 @@ public:
 
         delete before->next;
         before->next = after;
+        after->previous = before;
 
         size -= 1;
     }
 
-    friend ostream& operator<<(ostream& out, const LinkedList& list) {
-        Node<T>* ptr = list.head;
+    friend ostream& operator<<(ostream& out, const DoublyLinkedList& list) {
+        Node_DL<T>* ptr = list.head;
 
         while (ptr != nullptr) {
             out << ptr->data << "\n";
@@ -166,25 +178,9 @@ public:
         return out;
     }
 
-    size_t getSize() { return size; }
-
-    T& operator[](size_t index) {
-        if (index >= size || index < 0) {
-            throw exception("Invalid index!");
-        }
-
-        Node<T>* ptr = head;
-
-        for (size_t i = 0; i < index; i++) {
-            ptr = ptr->next;
-        }
-
-        return ptr->data;
-    }
-
-    ~LinkedList() {
-        Node<T>* curr = head;
-        Node<T>* next = head->next;
+    ~DoublyLinkedList() {
+        Node_DL<T>* curr = head;
+        Node_DL<T>* next = head->next;
 
         while (next != nullptr) {
             delete curr;
@@ -195,26 +191,3 @@ public:
         delete curr;
     }
 };
-
-int main() {
-    LinkedList<int> list;
-
-    for (size_t i = 0; i < 10; i++) {
-        list.pushFront(i);
-        list.pushBack(i);
-    }
-
-    list.popFront();
-    list.popBack();
-
-    cout << list[2] << endl;
-
-    list.insert(1337, 2);
-    list.erase(2);
-
-    cout << list << endl;
-
-    cout << list.getSize() << endl;
-
-    return 0;
-}

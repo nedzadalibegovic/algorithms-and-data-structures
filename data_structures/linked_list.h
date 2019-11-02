@@ -1,34 +1,31 @@
+#pragma once
 #include <iostream>
 
 using namespace std;
 
 template <class T>
-struct Node {
+struct Node_LinkedList {
     T data;
-    Node<T>* previous;
-    Node<T>* next;
+    Node_LinkedList* next;
 
-public:
-    Node(const T& data) : data(data) {
-        previous = nullptr;
+    Node_LinkedList(const T& data) : data(data) {
         next = nullptr;
     }
 };
 
 template <class T>
-class DoublyLinkedList {
-    Node<T>* head;
-    Node<T>* tail;
+class LinkedList {
+    Node_LinkedList<T>* head;
+    Node_LinkedList<T>* tail;
     size_t size;
 
     void init(const T& data) {
-        head = new Node<T>(data);
+        head = new Node_LinkedList<T>(data);
         tail = head;
         size = 1;
     }
-
 public:
-    DoublyLinkedList() {
+    LinkedList() {
         head = nullptr;
         tail = nullptr;
         size = 0;
@@ -38,10 +35,9 @@ public:
         if (size == 0) {
             init(data);
         } else {
-            Node<T>* ptr = new Node<T>(data);
+            Node_LinkedList<T>* ptr = new Node_LinkedList<T>(data);
 
             ptr->next = head;
-            head->previous = ptr;
             head = ptr;
             size += 1;
         }
@@ -51,8 +47,7 @@ public:
         if (size == 0) {
             init(data);
         } else {
-            tail->next = new Node<T>(data);
-            tail->next->previous = tail;
+            tail->next = new Node_LinkedList<T>(data);
             tail = tail->next;
             size += 1;
         }
@@ -69,8 +64,8 @@ public:
             return;
         }
 
-        Node<T>* itr = head;
-        Node<T>* ptr = nullptr;
+        Node_LinkedList<T>* itr = head;
+        Node_LinkedList<T>* ptr = itr;
 
         while (itr != tail) {
             ptr = itr;
@@ -94,11 +89,10 @@ public:
             return;
         }
 
-        Node<T>* ptr = head->next;
+        Node_LinkedList<T>* ptr = head->next;
 
         delete head;
         head = ptr;
-        head->previous = nullptr;
         size -= 1;
     }
 
@@ -117,8 +111,8 @@ public:
             return;
         }
 
-        Node<T>* before = head;
-        Node<T>* after = nullptr;
+        Node_LinkedList<T>* before = head;
+        Node_LinkedList<T>* after = nullptr;
 
         for (size_t i = 0; i < index - 1; i++) {
             before = before->next;
@@ -126,11 +120,8 @@ public:
 
         after = before->next;
 
-        before->next = new Node<T>(data);
+        before->next = new Node_LinkedList<T>(data);
         before->next->next = after;
-
-        after->previous = before->next;
-        before->next->previous = before;
 
         size += 1;
     }
@@ -150,8 +141,8 @@ public:
             return;
         }
 
-        Node<T>* before = head;
-        Node<T>* after = nullptr;
+        Node_LinkedList<T>* before = head;
+        Node_LinkedList<T>* after = nullptr;
 
         for (size_t i = 0; i < index - 1; i++) {
             before = before->next;
@@ -161,13 +152,12 @@ public:
 
         delete before->next;
         before->next = after;
-        after->previous = before;
 
         size -= 1;
     }
 
-    friend ostream& operator<<(ostream& out, const DoublyLinkedList& list) {
-        Node<T>* ptr = list.head;
+    friend ostream& operator<<(ostream& out, const LinkedList& list) {
+        Node_LinkedList<T>* ptr = list.head;
 
         while (ptr != nullptr) {
             out << ptr->data << "\n";
@@ -177,9 +167,25 @@ public:
         return out;
     }
 
-    ~DoublyLinkedList() {
-        Node<T>* curr = head;
-        Node<T>* next = head->next;
+    size_t getSize() { return size; }
+
+    T& operator[](size_t index) {
+        if (index >= size || index < 0) {
+            throw exception("Invalid index!");
+        }
+
+        Node_LinkedList<T>* ptr = head;
+
+        for (size_t i = 0; i < index; i++) {
+            ptr = ptr->next;
+        }
+
+        return ptr->data;
+    }
+
+    ~LinkedList() {
+        Node_LinkedList<T>* curr = head;
+        Node_LinkedList<T>* next = head->next;
 
         while (next != nullptr) {
             delete curr;
@@ -190,22 +196,3 @@ public:
         delete curr;
     }
 };
-
-int main() {
-    DoublyLinkedList<int> list;
-
-    for (size_t i = 0; i < 10; i++) {
-        list.pushFront(i);
-    }
-
-    list.pushBack(1337);
-
-    list.popBack();
-    list.popFront();
-
-    list.insert(1337, 2);
-    list.erase(2);
-
-    cout << list << endl;
-
-}

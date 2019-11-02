@@ -1,24 +1,25 @@
+#pragma once
 #include <iostream>
 
 using namespace std;
 
 template <class T>
-struct Node {
+struct Node_Stack {
     T data;
-    Node* previous;
+    Node_Stack* previous;
 
-    Node(const T& data) : data(data) {
+    Node_Stack(const T& data) : data(data) {
         previous = nullptr;
     }
 };
 
 template <class T>
 class Stack {
-    Node<T>* head;
+    Node_Stack<T>* head;
     size_t size;
 
     void init(const T& data) {
-        head = new Node<T>(data);
+        head = new Node_Stack<T>(data);
         size = 1;
     }
 public:
@@ -31,7 +32,7 @@ public:
         if (size == 0) {
             init(data);
         } else {
-            Node<T>* ptr = new Node<T>(data);
+            Node_Stack<T>* ptr = new Node_Stack<T>(data);
 
             ptr->previous = head;
             head = ptr;
@@ -51,7 +52,7 @@ public:
             return;
         }
 
-        Node<T>* ptr = head->previous;
+        Node_Stack<T>* ptr = head->previous;
 
         delete head;
         head = ptr;
@@ -59,7 +60,7 @@ public:
     }
 
     friend ostream& operator<<(ostream& out, const Stack& obj) {
-        Node<T>* ptr = obj.head;
+        Node_Stack<T>* ptr = obj.head;
 
         while (ptr != nullptr) {
             out << ptr->data << "\n";
@@ -70,8 +71,8 @@ public:
     }
 
     ~Stack() {
-        Node<T>* curr = head;
-        Node<T>* next = head->previous;
+        Node_Stack<T>* curr = head;
+        Node_Stack<T>* next = head->previous;
 
         while (next != nullptr) {
             delete curr;
@@ -82,21 +83,3 @@ public:
         delete curr;
     }
 };
-
-int main() {
-    Stack<int> foo;
-
-    /*for (size_t i = 0; i < 10000000; i++) {
-        foo.push(i);
-    }*/
-
-    for (size_t i = 0; i < 10; i++) {
-        foo.push(i);
-    }
-
-    foo.pop();
-
-    cout << foo << endl;
-
-    return 0;
-}
