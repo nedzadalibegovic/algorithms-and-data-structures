@@ -1,17 +1,18 @@
 #pragma once
 #include <iostream>
-#include "node.h"
 
 using namespace std;
 
 template <class T>
-struct Node_DL : Node<T> {
-    Node_DL<T>* previous;
+struct Node_DL {
+    T data;
+    Node_DL* next;
+    Node_DL* previous;
 
 public:
     Node_DL(const T& data) : data(data) {
-        previous = nullptr;
         next = nullptr;
+        previous = nullptr;
     }
 };
 
