@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="List.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="ListPtr.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="ListSeq.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Node.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorityQueuePtr.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="PriorityQueueSeq.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Queue.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="QueuePtr.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="QueueSeq.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="Stack.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="StackPtr.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="StackSeq.h">
+      <Filter>Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="BubbleSort.h">
+      <Filter>Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="InsertionSort.h">
+      <Filter>Algorithms</Filter>
+    </ClInclude>
+    <ClInclude Include="SelectionSort.h">
+      <Filter>Algorithms</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Data Structures">
+      <UniqueIdentifier>{099c410a-ad9c-48db-b29d-6f283958f77a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Algorithms">
+      <UniqueIdentifier>{a654f66d-e01b-43fe-bcd2-f623c48e1381}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
