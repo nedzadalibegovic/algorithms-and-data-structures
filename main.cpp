@@ -1,7 +1,7 @@
 #include <iostream>
 #include <vector>
 
-// Data structures:
+// Data Structures:
 #include "ListPtr.h";
 #include "ListSeq.h"
 #include "StackSeq.h"
