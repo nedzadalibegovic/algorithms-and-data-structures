@@ -10,6 +10,7 @@
 #include "QueuePtr.h"
 #include "PriorityQueueSeq.h"
 #include "PriorityQueuePtr.h"
+#include "PriorityQueueHeap.h"
 
 // Algorithms:
 #include "BubbleSort.h"
@@ -151,6 +152,23 @@ int main() {
     }
 
     cout << "/PriorityQueuePtr\n";
+#pragma endregion
+
+#pragma region PriorityQueueHeap
+    cout << "PriorityQueueHeap\n";
+    PriorityQueueHeap<int> priority_queue_heap;
+
+    for (size_t i = 1; i <= 10; i++) {
+        priority_queue_heap.enqueue(i);
+    }
+
+    priority_queue_heap.print();
+
+    for (size_t i = 0; i < 10; i++) {
+        cout << priority_queue_heap.dequeue() << "<-\n";
+    }
+
+    cout << "/PriorityQueueHeap\n";
 #pragma endregion
 
 #pragma region BubbleSort

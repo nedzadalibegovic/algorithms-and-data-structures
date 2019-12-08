@@ -47,9 +47,6 @@
     <ClInclude Include="data_structures\Node.h">
       <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
-    <ClInclude Include="data_structures\PriorityQueueHeap.h">
-      <Filter>Header Files\Data Structures</Filter>
-    </ClInclude>
     <ClInclude Include="data_structures\PriorityQueuePtr.h">
       <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
@@ -72,6 +69,9 @@
       <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
     <ClInclude Include="data_structures\StackSeq.h">
+      <Filter>Header Files\Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="data_structures\PriorityQueueHeap.h">
       <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
   </ItemGroup>
