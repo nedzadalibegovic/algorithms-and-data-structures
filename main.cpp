@@ -17,6 +17,7 @@
 #include "BubbleSort.h"
 #include "InsertionSort.h"
 #include "SelectionSort.h"
+#include "MergeSort.h"
 
 using namespace std;
 
@@ -206,6 +207,18 @@ int main() {
     cout << "\nSelection sort:\n";
     for (size_t i = 0; i < arr_selection.size(); i++) {
         cout << arr_selection[i] << " ";
+    }
+
+#pragma endregion
+
+#pragma region MergeSort
+    vector<int> arr_merge = random.integer_vector_uniform(100);
+
+    MergeSort(arr_merge.data(), arr_merge.size());
+
+    cout << "\nMerge sort:\n";
+    for (size_t i = 0; i < arr_merge.size(); i++) {
+        cout << arr_merge[i] << " ";
     }
 
 #pragma endregion

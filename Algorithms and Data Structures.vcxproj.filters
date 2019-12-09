@@ -77,5 +77,8 @@
     <ClInclude Include="algorithms\Random.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="algorithms\MergeSort.h">
+      <Filter>Header Files\Algorithms</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
