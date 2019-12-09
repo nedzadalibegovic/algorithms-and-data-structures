@@ -74,5 +74,8 @@
     <ClInclude Include="data_structures\PriorityQueueHeap.h">
       <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
+    <ClInclude Include="algorithms\Random.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
