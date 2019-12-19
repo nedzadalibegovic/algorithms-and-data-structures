@@ -80,5 +80,8 @@
     <ClInclude Include="algorithms\MergeSort.h">
       <Filter>Header Files\Algorithms</Filter>
     </ClInclude>
+    <ClInclude Include="algorithms\QuickSort.h">
+      <Filter>Header Files\Algorithms</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

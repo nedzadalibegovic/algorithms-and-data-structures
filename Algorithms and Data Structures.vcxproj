@@ -148,6 +148,7 @@
     <ClInclude Include="algorithms\BubbleSort.h" />
     <ClInclude Include="algorithms\InsertionSort.h" />
     <ClInclude Include="algorithms\MergeSort.h" />
+    <ClInclude Include="algorithms\QuickSort.h" />
     <ClInclude Include="algorithms\SelectionSort.h" />
     <ClInclude Include="data_structures\List.h" />
     <ClInclude Include="data_structures\ListPtr.h" />

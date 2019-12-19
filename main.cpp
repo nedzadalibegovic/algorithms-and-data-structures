@@ -18,6 +18,7 @@
 #include "InsertionSort.h"
 #include "SelectionSort.h"
 #include "MergeSort.h"
+#include "QuickSort.h"
 
 using namespace std;
 
@@ -219,6 +220,18 @@ int main() {
     cout << "\nMerge sort:\n";
     for (size_t i = 0; i < arr_merge.size(); i++) {
         cout << arr_merge[i] << " ";
+    }
+
+#pragma endregion
+
+#pragma region QuickSort
+    vector<int> arr_quick = random.integer_vector_uniform(100);
+
+    QuickSort(arr_quick.data(), arr_quick.size());
+
+    cout << "\nQuick sort:\n";
+    for (size_t i = 0; i < arr_quick.size(); i++) {
+        cout << arr_quick[i] << " ";
     }
 
 #pragma endregion
