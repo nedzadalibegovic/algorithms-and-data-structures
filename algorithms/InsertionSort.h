@@ -1,5 +1,5 @@
 #pragma once
-#include <iostream>
+#include <utility>
 
 template <class T>
 void InsertionSort(T arr[], size_t size) {
