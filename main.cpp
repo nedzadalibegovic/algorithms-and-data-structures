@@ -10,7 +10,8 @@
 #include "QueuePtr.h"
 #include "PriorityQueueSeq.h"
 #include "PriorityQueuePtr.h"
-#include "PriorityQueueHeap.h"
+#include "PriorityQueueHeap_Itr.h"
+#include "PriorityQueueHeap_Rcr.h"
 
 // Algorithms:
 #include "Random.h"
@@ -157,21 +158,38 @@ int main() {
     cout << "/PriorityQueuePtr\n";
 #pragma endregion
 
-#pragma region PriorityQueueHeap
-    cout << "PriorityQueueHeap\n";
-    PriorityQueueHeap<int> priority_queue_heap;
+#pragma region PriorityQueueHeap_Itr
+    cout << "PriorityQueueHeap_Itr\n";
+    PriorityQueueHeap_Itr<int> priority_queue_heap_itr;
 
     for (size_t i = 1; i <= 10; i++) {
-        priority_queue_heap.enqueue(i);
+        priority_queue_heap_itr.enqueue(i);
     }
 
-    priority_queue_heap.print();
+    priority_queue_heap_itr.print();
 
     for (size_t i = 0; i < 10; i++) {
-        cout << priority_queue_heap.dequeue() << "<-\n";
+        cout << priority_queue_heap_itr.dequeue() << "<-\n";
     }
 
-    cout << "/PriorityQueueHeap\n";
+    cout << "/PriorityQueueHeap_Itr\n";
+#pragma endregion
+
+#pragma region PriorityQueueHeap_Rcr
+    cout << "PriorityQueueHeap_Rcr\n";
+    PriorityQueueHeap_Rcr<int> priority_queue_heap_rcr;
+
+    for (size_t i = 1; i <= 10; i++) {
+        priority_queue_heap_rcr.enqueue(i);
+    }
+
+    priority_queue_heap_rcr.print();
+
+    for (size_t i = 0; i < 10; i++) {
+        cout << priority_queue_heap_rcr.dequeue() << "<-\n";
+    }
+
+    cout << "/PriorityQueueHeap_Rcr\n";
 #pragma endregion
 
     Random random;

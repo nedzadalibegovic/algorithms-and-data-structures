@@ -154,7 +154,7 @@
     <ClInclude Include="data_structures\ListPtr.h" />
     <ClInclude Include="data_structures\ListSeq.h" />
     <ClInclude Include="data_structures\Node.h" />
-    <ClInclude Include="data_structures\PriorityQueueHeap.h" />
+    <ClInclude Include="data_structures\PriorityQueueHeap_Itr.h" />
     <ClInclude Include="data_structures\PriorityQueuePtr.h" />
     <ClInclude Include="data_structures\PriorityQueueSeq.h" />
     <ClInclude Include="data_structures\Queue.h" />
@@ -164,6 +164,7 @@
     <ClInclude Include="data_structures\Stack.h" />
     <ClInclude Include="data_structures\StackPtr.h" />
     <ClInclude Include="data_structures\StackSeq.h" />
+    <ClInclude Include="PriorityQueueHeap_Rcr.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
