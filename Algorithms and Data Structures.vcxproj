@@ -164,10 +164,10 @@
     <ClInclude Include="data_structures\Stack.h" />
     <ClInclude Include="data_structures\StackPtr.h" />
     <ClInclude Include="data_structures\StackSeq.h" />
-    <ClInclude Include="HashTable.h" />
-    <ClInclude Include="HashTableChaining.h" />
-    <ClInclude Include="HashTableOpen.h" />
-    <ClInclude Include="PriorityQueueHeap_Rcr.h" />
+    <ClInclude Include="data_structures\HashTable.h" />
+    <ClInclude Include="data_structures\HashTableChaining.h" />
+    <ClInclude Include="data_structures\HashTableOpen.h" />
+    <ClInclude Include="data_structures\PriorityQueueHeap_Rcr.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

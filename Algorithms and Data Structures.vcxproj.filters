@@ -80,19 +80,19 @@
     <ClInclude Include="algorithms\QuickSort.h">
       <Filter>Header Files\Algorithms</Filter>
     </ClInclude>
-    <ClInclude Include="PriorityQueueHeap_Rcr.h">
-      <Filter>Header Files\Data Structures</Filter>
-    </ClInclude>
     <ClInclude Include="data_structures\PriorityQueueHeap_Itr.h">
       <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
-    <ClInclude Include="HashTable.h">
+    <ClInclude Include="data_structures\HashTable.h">
       <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
-    <ClInclude Include="HashTableOpen.h">
+    <ClInclude Include="data_structures\HashTableChaining.h">
       <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
-    <ClInclude Include="HashTableChaining.h">
+    <ClInclude Include="data_structures\HashTableOpen.h">
+      <Filter>Header Files\Data Structures</Filter>
+    </ClInclude>
+    <ClInclude Include="data_structures\PriorityQueueHeap_Rcr.h">
       <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
   </ItemGroup>
