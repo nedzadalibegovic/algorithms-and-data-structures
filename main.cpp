@@ -12,6 +12,7 @@
 #include "PriorityQueuePtr.h"
 #include "PriorityQueueHeap_Itr.h"
 #include "PriorityQueueHeap_Rcr.h"
+#include "HashTableOpen.h"
 
 // Algorithms:
 #include "Random.h"
@@ -190,6 +191,22 @@ int main() {
     }
 
     cout << "/PriorityQueueHeap_Rcr\n";
+#pragma endregion
+
+#pragma region HashTableOpen
+    cout << "HashTableOpen\n";
+    HashTableOpen<int, 10> hash_table_open;
+
+    for (size_t i = 1; i <= 8; i++) {
+        hash_table_open.push(i);
+    }
+
+    hash_table_open.push(8);
+    hash_table_open.pop(2);
+
+    hash_table_open.print();
+
+    cout << "\n/HashTableOpen";
 #pragma endregion
 
     Random random;
