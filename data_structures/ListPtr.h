@@ -61,11 +61,40 @@ public:
         return rtrn;
     }
 
+    // function used by HashTableChaining
+    bool pop(const T& item) {
+        if (head == nullptr) {
+            throw std::exception("No elements");
+        }
+
+        Node<T>* ptr = head;
+        Node<T>* bfr = nullptr;
+
+        while (ptr != nullptr && ptr->data != item) {
+            bfr = ptr;
+            ptr = ptr->next;
+        }
+
+        if (ptr == nullptr) {
+            return false;
+        }
+
+        if (bfr == nullptr) {
+            head = ptr->next;
+            delete ptr;
+            return true;
+        }
+
+        bfr->next = ptr->next;
+        delete ptr;
+        return true;
+    }
+
     virtual void print() override {
         Node<T>* ptr = head;
 
         while (ptr != nullptr) {
-            std::cout << ptr->data << "\n";
+            std::cout << ptr->data << " ";
             ptr = ptr->next;
         }
     }

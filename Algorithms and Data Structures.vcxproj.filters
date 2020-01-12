@@ -92,5 +92,8 @@
     <ClInclude Include="HashTableOpen.h">
       <Filter>Header Files\Data Structures</Filter>
     </ClInclude>
+    <ClInclude Include="HashTableChaining.h">
+      <Filter>Header Files\Data Structures</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

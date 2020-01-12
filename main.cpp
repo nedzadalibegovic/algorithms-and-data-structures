@@ -13,6 +13,7 @@
 #include "PriorityQueueHeap_Itr.h"
 #include "PriorityQueueHeap_Rcr.h"
 #include "HashTableOpen.h"
+#include "HashTableChaining.h"
 
 // Algorithms:
 #include "Random.h"
@@ -206,7 +207,25 @@ int main() {
 
     hash_table_open.print();
 
-    cout << "\n/HashTableOpen";
+    cout << "\n/HashTableOpen\n";
+#pragma endregion
+
+#pragma region HashTableChaining
+    cout << "HashTableChaining\n";
+    HashTableChaining<int, 10> hash_table_chaining;
+
+    for (size_t i = 0; i < 9; i++) {
+        hash_table_chaining.push(i);
+    }
+
+    hash_table_chaining.push(8);
+    hash_table_chaining.pop(8);
+    hash_table_chaining.push(9);
+    hash_table_chaining.pop(2);
+
+    hash_table_chaining.print();
+
+    cout << "/HashTableChaining";
 #pragma endregion
 
     Random random;
